@@ -998,11 +998,6 @@ static int zorder[ ] = {
 		1, 2, 3, 4, -5, 6
 		};
 
-// fraction of the length to use as height of the characters:
-const float LENFRAC = 0.10f;
-
-// fraction of length to use as start location of the characters:
-const float BASEFRAC = 1.10f;
 
 //	Draw a set of 3D axes:
 //	(length is the axis length in world coordinates)
@@ -1011,64 +1006,17 @@ void
 Axes( float length )
 {
 	glBegin( GL_LINE_STRIP );
-		glVertex3f( length, 0., 0. );
+		glColor3f(1., 0., 0.);
+		glVertex3f( length*1.5, 0., 0. );
+		glVertex3f( 0., 0., 0. );
+		glColor3f(1., 1., 0.);
 		glVertex3f( 0., 0., 0. );
 		glVertex3f( 0., length*2.0, 0. );
 	glEnd( );
 	glBegin( GL_LINE_STRIP );
+		glColor3f(0., 0., 1.);
 		glVertex3f( 0., 0., 0. );
 		glVertex3f( 0., 0., length*2.0 );
-	glEnd( );
-
-	float fact = LENFRAC * length;
-	float base = BASEFRAC * length;
-
-	glBegin( GL_LINE_STRIP );
-		for( int i = 0; i < 4; i++ )
-		{
-			int j = xorder[i];
-			if( j < 0 )
-			{
-				
-				glEnd( );
-				glBegin( GL_LINE_STRIP );
-				j = -j;
-			}
-			j--;
-			glVertex3f( base + fact*xx[j], fact*xy[j], 0.0 );
-		}
-	glEnd( );
-
-	glBegin( GL_LINE_STRIP );
-		for( int i = 0; i < 5; i++ )
-		{
-			int j = yorder[i];
-			if( j < 0 )
-			{
-				
-				glEnd( );
-				glBegin( GL_LINE_STRIP );
-				j = -j;
-			}
-			j--;
-			glVertex3f( fact*yx[j], base + fact*yy[j], 0.0 );
-		}
-	glEnd( );
-
-	glBegin( GL_LINE_STRIP );
-		for( int i = 0; i < 6; i++ )
-		{
-			int j = zorder[i];
-			if( j < 0 )
-			{
-				
-				glEnd( );
-				glBegin( GL_LINE_STRIP );
-				j = -j;
-			}
-			j--;
-			glVertex3f( 0.0, fact*zy[j], base + fact*zx[j] );
-		}
 	glEnd( );
 
 }
