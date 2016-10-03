@@ -40,6 +40,9 @@
 //		O: Change to Orthographic
 //	Author:			Wenbo Hou 
 //  Refer: Joe Graphics
+/*Work log:
+	10022122 set up the view point
+*/
 
 
 
@@ -62,7 +65,7 @@ const int GLUIFALSE = { false };
 
 // initial window size:
 
-const int INIT_WINDOW_SIZE = { 600 };
+const int INIT_WINDOW_SIZE = { 800 };
 
 
 // size of the box:
@@ -314,8 +317,8 @@ Display( )
 	GLsizei vx = glutGet( GLUT_WINDOW_WIDTH );
 	GLsizei vy = glutGet( GLUT_WINDOW_HEIGHT );
 	GLsizei v = vx < vy ? vx : vy;			// minimum dimension
-	GLint xl = ( vx - v ) / 2;
-	GLint yb = ( vy - v ) / 2;
+	GLint xl = ( vx - v );
+	GLint yb = ( vy - v );
 	glViewport( xl, yb,  v, v );
 
 
@@ -340,7 +343,7 @@ Display( )
 
 	// set the eye position, look-at position, and up-vector:
 
-	gluLookAt( 0., 0., 3.,     0., 0., 0.,     0., 1., 0. );
+	gluLookAt( 1., 0., 0.,     0., 0., 0.,     0., 1., 0. );
 
 
 	// rotate the scene:

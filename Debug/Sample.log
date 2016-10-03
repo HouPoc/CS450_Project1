@@ -1,5 +1,5 @@
 ﻿  Sample.cpp
-c:\users\poi\desktop\sample1\sample\sample.cpp(730): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\poi\desktop\sample1\sample\sample.cpp(946): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\poi\desktop\sample1\sample\sample.cpp(1113): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Sample.vcxproj -> C:\Users\Poi\Desktop\Sample1\Sample\Debug\Sample.exe
+c:\users\poi\documents\github\cs450_project1\sample.cpp(733): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(949): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1116): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Sample.vcxproj -> C:\Users\Poi\Documents\GitHub\CS450_Project1\Debug\Sample.exe
