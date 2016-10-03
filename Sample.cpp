@@ -340,7 +340,7 @@ Display( )
 
 	// set the eye position, look-at position, and up-vector:
 
-	gluLookAt( 0., 0., 3.,     0., 0., 0.,     0., 1., 0. );
+	gluLookAt( 15., 0., 0.,     0., 0., 0.,     0., 1., 0. );
 
 
 	// rotate the scene:
@@ -395,12 +395,12 @@ Display( )
 	// draw some gratuitous text that just rotates on top of the scene:
 
 	glDisable( GL_DEPTH_TEST );
-	glColor3f( 0., 1., 1. );
-	DoRasterString( 0., 1., 0., "Text That Moves" );
+	//glColor3f( 0., 1., 1. );
+	//DoRasterString( 0., 5., 0., "Text That Moves" );
 
 
 	// draw some gratuitous text that is fixed on the screen:
-	//
+	//	
 	// the projection matrix is reset to define a scene whose
 	// world coordinate system goes from 0-100 in each axis
 	//
@@ -415,8 +415,8 @@ Display( )
 	gluOrtho2D( 0., 100.,     0., 100. );
 	glMatrixMode( GL_MODELVIEW );
 	glLoadIdentity( );
-	glColor3f( 1., 1., 1. );
-	DoRasterString( 5., 5., 0., "Text That Doesn't" );
+	//glColor3f( 1., 1., 1. );
+	//DoRasterString( 5., 5., 0., "Text That Doesn't" );
 
 
 	// swap the double-buffered framebuffers:
@@ -739,6 +739,7 @@ InitLists( )
 	}
 	glEnd();
 	glPopMatrix();
+
 	glEndList( );
 
 
@@ -1012,11 +1013,11 @@ Axes( float length )
 	glBegin( GL_LINE_STRIP );
 		glVertex3f( length, 0., 0. );
 		glVertex3f( 0., 0., 0. );
-		glVertex3f( 0., length, 0. );
+		glVertex3f( 0., length*2.0, 0. );
 	glEnd( );
 	glBegin( GL_LINE_STRIP );
 		glVertex3f( 0., 0., 0. );
-		glVertex3f( 0., 0., length );
+		glVertex3f( 0., 0., length*2.0 );
 	glEnd( );
 
 	float fact = LENFRAC * length;
