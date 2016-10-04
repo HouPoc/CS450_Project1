@@ -55,6 +55,11 @@ const int GLUITRUE  = { true  };
 const int GLUIFALSE = { false };
 
 
+// blade parameters:
+
+#define BLADE_RADIUS		 1.0
+#define BLADE_WIDTH		 0.4
+
 // the escape key:
 
 #define ESCAPE		0x1b
@@ -340,7 +345,7 @@ Display( )
 
 	// set the eye position, look-at position, and up-vector:
 
-	gluLookAt( 15., 0., 0.,     0., 0., 0.,     0., 1., 0. );
+	gluLookAt( 12., 4., -2.,     0., 0., 0.,     0., 1., 0. );
 
 
 	// rotate the scene:
@@ -703,9 +708,10 @@ InitLists( )
 	glutSetWindow( MainWindow );
 
 	// create the object:
-
+	
 	BoxList = glGenLists( 1 );
 	glNewList( BoxList, GL_COMPILE );
+	
 	glPushMatrix();
 	glTranslatef(0., -1., 0.);
 	glRotatef(97., 0., 1., 0.);
@@ -716,9 +722,6 @@ InitLists( )
 		p0 = &Helipoints[tp->p0];
 		p1 = &Helipoints[tp->p1];
 		p2 = &Helipoints[tp->p2];
-
-		/* fake "lighting" from above:			*/
-
 		p01[0] = p1->x - p0->x;
 		p01[1] = p1->y - p0->y;
 		p01[2] = p1->z - p0->z;
@@ -739,9 +742,41 @@ InitLists( )
 	}
 	glEnd();
 	glPopMatrix();
+	
+	// draw the top helicopter blade with radius 5
+	glPushMatrix();
+	glTranslatef(0.0, 2.9, -2.0);
+	glRotatef(90, 1.0, 0.0, 0.0);
+	glScalef(5.0, 5.0, 5.0);
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.0, 1.0, 1.0);
+	glVertex2f(BLADE_RADIUS, BLADE_WIDTH / 2.);
+	glVertex2f(0., 0.);
+	glVertex2f(BLADE_RADIUS, -BLADE_WIDTH / 2.);
 
-	glEndList( );
+	glVertex2f(-BLADE_RADIUS, -BLADE_WIDTH / 2.);
+	glVertex2f(0., 0.);
+	glVertex2f(-BLADE_RADIUS, BLADE_WIDTH / 2.);
+	glEnd();
+	glPopMatrix();
 
+	// draw the rear helicopter blade with radius 1.5
+	glPushMatrix();
+	glTranslatef(0.5, 2.5, 9.0);
+	glRotatef(90, 0.0, 1.0, 0.0);
+	glScalef(2.5, 2.5, 2.5);
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.0, 1.0, 1.0);
+	glVertex2f(BLADE_RADIUS, BLADE_WIDTH / 2.);
+	glVertex2f(0., 0.);
+	glVertex2f(BLADE_RADIUS, -BLADE_WIDTH / 2.);
+
+	glVertex2f(-BLADE_RADIUS, -BLADE_WIDTH / 2.);
+	glVertex2f(0., 0.);
+	glVertex2f(-BLADE_RADIUS, BLADE_WIDTH / 2.);
+	glEnd();
+	glPopMatrix();
+	glEndList();
 
 	// create the axes:
 
