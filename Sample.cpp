@@ -193,6 +193,9 @@ int		Xmouse, Ymouse;			// mouse values
 float	Xrot, Yrot;				// rotation angles in degrees
 float	BladeAngle;				// increasing angle for blades.
 float   Time;
+float	eyepos_out[3] = { 12.0, 4.0, -2.0 };
+float	eyepos_ins[3] = { -0.4, 1.8, -4.9 };
+float	LookInside;
 // function prototypes:
 
 void	Animate( );
@@ -203,6 +206,7 @@ void	DoDepthMenu( int );
 void	DoDebugMenu( int );
 void	DoMainMenu( int );
 void	DoProjectMenu( int );
+void    DoViewMenu(int);
 void	DoRasterString( float, float, float, char * );
 void	DoStrokeString( float, float, float, float, char * );
 float	ElapsedSeconds( );
@@ -382,9 +386,10 @@ Display( )
 
 
 	// set the eye position, look-at position, and up-vector:
-
-	gluLookAt( 12., 4., -2.,     0., 0., 0.,     0., 1., 0. );
-
+	if (LookInside ==1)
+		gluLookAt( eyepos_out[0], eyepos_out[1], eyepos_out[2],     0., 0., 0.,     0., 1., 0. );
+	else 
+		gluLookAt( eyepos_ins[0], eyepos_ins[1], eyepos_ins[2],     -0.6 , 2.0, -6.,     0., 1., 0. );
 
 	// rotate the scene:
 
@@ -552,7 +557,12 @@ DoProjectMenu( int id )
 	glutPostRedisplay( );
 }
 
-
+void 
+DoViewMenu(int id) {
+	LookInside = id;
+	glutSetWindow(MainWindow);
+	glutPostRedisplay();
+}
 // use glut to display a string of characters using a raster font:
 
 void
@@ -627,6 +637,10 @@ InitMenus( )
 	glutAddMenuEntry( "Off",  0 );
 	glutAddMenuEntry( "On",   1 );
 
+	int viewmenu = glutCreateMenu(DoViewMenu);
+	glutAddMenuEntry("Inside View", 0);
+	glutAddMenuEntry("Outside View", 1);
+
 	int projmenu = glutCreateMenu( DoProjectMenu );
 	glutAddMenuEntry( "Orthographic",  ORTHO );
 	glutAddMenuEntry( "Perspective",   PERSP );
@@ -638,6 +652,7 @@ InitMenus( )
 	glutAddSubMenu(   "Projection",    projmenu );
 	glutAddMenuEntry( "Reset",         RESET );
 	glutAddSubMenu(   "Debug",         debugmenu);
+	glutAddSubMenu(	  "View",		   viewmenu);
 	glutAddMenuEntry( "Quit",          QUIT );
 
 // attach the pop-up menu to the right mouse button:
@@ -921,6 +936,7 @@ Reset( )
 {
 	ActiveButton = 0;
 	BladeAngle = 0;
+	LookInside = 1;
 	AxesOn = 1;
 	DebugOn = 0;
 	DepthCueOn = 0;
