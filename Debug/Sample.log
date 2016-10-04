@@ -1,17 +1,20 @@
 ﻿  Sample.cpp
-c:\users\poi\documents\github\cs450_project1\sample.cpp(287): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(293): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(295): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(197): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+c:\users\poi\documents\github\cs450_project1\sample.cpp(197): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(291): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
 c:\users\poi\documents\github\cs450_project1\sample.cpp(297): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
 c:\users\poi\documents\github\cs450_project1\sample.cpp(299): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(311): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(313): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(301): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(303): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
 c:\users\poi\documents\github\cs450_project1\sample.cpp(315): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
 c:\users\poi\documents\github\cs450_project1\sample.cpp(317): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(769): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(987): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(1050): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(1054): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(1059): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(1102): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(319): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(321): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(562): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(784): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1003): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1066): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1070): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1075): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1118): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Sample.vcxproj -> C:\Users\Poi\Documents\GitHub\CS450_Project1\Debug\Sample.exe
