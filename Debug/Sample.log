@@ -1,17 +1,17 @@
 ﻿  Sample.cpp
-c:\users\poi\documents\github\cs450_project1\sample.cpp(290): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(296): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(298): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(300): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(302): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(314): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(316): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(318): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(320): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\poi\documents\github\cs450_project1\sample.cpp(772): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(990): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(1053): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(1057): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(1062): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poi\documents\github\cs450_project1\sample.cpp(1105): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(287): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(293): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(295): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(297): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(299): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(311): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(313): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(315): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(317): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\poi\documents\github\cs450_project1\sample.cpp(769): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(987): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1050): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1054): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1059): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poi\documents\github\cs450_project1\sample.cpp(1102): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Sample.vcxproj -> C:\Users\Poi\Documents\GitHub\CS450_Project1\Debug\Sample.exe
