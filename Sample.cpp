@@ -59,7 +59,7 @@ const int GLUIFALSE = { false };
 
 #define BLADE_RADIUS		 1.0
 #define BLADE_WIDTH		 0.4
-#define MS_IN_THE_ANIMATION_CYCLE 50
+#define MS_IN_THE_ANIMATION_CYCLE 1000
 // the escape key:
 
 #define ESCAPE		0x1b
@@ -284,7 +284,10 @@ Animate( )
 {
 	// put animation stuff in here -- change some global variables
 	// for Display( ) to find:
-	
+	int ms = glutGet(GLUT_ELAPSED_TIME);	// milliseconds
+	ms %= MS_IN_THE_ANIMATION_CYCLE;
+	Time = (float)ms / (float)MS_IN_THE_ANIMATION_CYCLE;        // [ 0., 1. )
+	BladeAngle = Time * 360.0;
 	glutSetWindow(MainWindow);
 	// force a call to Display( ) next time it is convenient:
 	glutPostRedisplay( );
