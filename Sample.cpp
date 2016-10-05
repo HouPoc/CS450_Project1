@@ -59,7 +59,7 @@ const int GLUIFALSE = { false };
 
 #define BLADE_RADIUS		 1.0
 #define BLADE_WIDTH		 0.4
-#define MS_IN_THE_ANIMATION_CYCLE 1000
+#define MS_IN_THE_ANIMATION_CYCLE 4000
 // the escape key:
 
 #define ESCAPE		0x1b
@@ -192,7 +192,8 @@ int		WhichColor;				// index into Colors[ ]
 int		WhichProjection;		// ORTHO or PERSP
 int		Xmouse, Ymouse;			// mouse values
 float	Xrot, Yrot;				// rotation angles in degrees
-float	BladeAngle;				// increasing angle for blades.
+float	BladeAngle_T;				// increasing angle for blades.
+float	BladeAngle_R;
 float   Time;
 float	eyepos_out[3] = { 12.0, 4.0, -2.0 };
 float	eyepos_ins[3] = { -0.4, 1.8, -4.9 };
@@ -287,7 +288,8 @@ Animate( )
 	int ms = glutGet(GLUT_ELAPSED_TIME);	// milliseconds
 	ms %= MS_IN_THE_ANIMATION_CYCLE;
 	Time = (float)ms / (float)MS_IN_THE_ANIMATION_CYCLE;        // [ 0., 1. )
-	BladeAngle = Time * 360.0;
+	BladeAngle_T = Time * 360.0;
+	BladeAngle_R = BladeAngle_T * 3.0;
 	glutSetWindow(MainWindow);
 	// force a call to Display( ) next time it is convenient:
 	glutPostRedisplay( );
@@ -408,7 +410,7 @@ Display( )
 
 	glPushMatrix();
 	glTranslatef(0.0, 2.9, -2.0);
-	glRotatef(BladeAngle, 0.0, 1.0, 0.0);
+	glRotatef(BladeAngle_T, 0.0, 1.0, 0.0);
 	glRotatef(90.0, 1.0, 0.0, 0.0);
 	glScalef(5.0, 5.0, 5.0);
 	glCallList(TopBladeList);
@@ -416,7 +418,7 @@ Display( )
 
 	glPushMatrix();
 	glTranslatef(0.5, 2.5, 9.0);
-	glRotatef(BladeAngle, 1.0, 0.0, 0.0);
+	glRotatef(BladeAngle_R, 1.0, 0.0, 0.0);
 	glRotatef(90.0, 0.0, 1.0, 0.0);
 	glCallList(RearBladeList);
 	glPopMatrix();
@@ -773,8 +775,21 @@ InitLists( )
 	}
 	glEnd();
 	glPopMatrix();
+	glBegin(GL_POLYGON);
+	glColor3f(0.8, 1.0, 0.0);
+	glVertex3f( -3.0, 0.0, -8.0);
+	glVertex3f(  3.0, 0.0, -8.0);
+	glVertex3f(  3.0, 3.0, -8.0);
+	glVertex3f( -3.0, 3.0, -8.0);
+	glEnd();
+	glBegin(GL_POLYGON);
+	glColor3f(0.8, 0.0, 0.8);
+	glVertex3f(3.0, 0.0, -8.0);
+	glVertex3f(3.0, 0.0, -9.0);
+	glVertex3f(3.0, 3.0, -9.0);
+	glVertex3f(3.0, 3.0, -8.0);
+	glEnd();
 	glEndList();
-
 	// draw the top helicopter blade with radius 5
 	TopBladeList = glGenLists(1);
 	glNewList(TopBladeList, GL_COMPILE);
@@ -948,7 +963,8 @@ void
 Reset( )
 {
 	ActiveButton = 0;
-	BladeAngle = 0;
+	BladeAngle_R = 0;
+	BladeAngle_T = 0;
 	LookInside = 1;
 	AxesOn = 1;
 	DebugOn = 0;
