@@ -184,7 +184,8 @@ int		AxesOn;					// != 0 means to draw the axes
 int		DebugOn;				// != 0 means to print debugging info
 int		DepthCueOn;				// != 0 means to use intensity depth cueing
 GLuint	BoxList;				// object display list
-GLuint	BladeList;				// object display list
+GLuint	TopBladeList;				// object display list
+GLuint	RearBladeList;				// object display list
 int		MainWindow;				// window id for main graphics window
 float	Scale;					// scaling factor
 int		WhichColor;				// index into Colors[ ]
@@ -283,45 +284,7 @@ Animate( )
 {
 	// put animation stuff in here -- change some global variables
 	// for Display( ) to find:
-	BladeAngle += 60;
-	BladeList = glGenLists(1);
-	glNewList(BladeList, GL_COMPILE);
-	// draw the top helicopter blade with radius 5
-	glPushMatrix();
-	glTranslatef(0.0, 2.9, -2.0);
-	glRotatef(BladeAngle, 0.0, 1.0, 0.0);
-	glRotatef(90.0, 1.0, 0.0, 0.0);
-	glScalef(5.0, 5.0, 5.0);
-	glBegin(GL_TRIANGLES);
-	glColor3f(1.0, 1.0, 1.0);
-	glVertex2f(BLADE_RADIUS, BLADE_WIDTH / 2.);
-	glVertex2f(0., 0.);
-	glVertex2f(BLADE_RADIUS, -BLADE_WIDTH / 2.);
-
-	glVertex2f(-BLADE_RADIUS, -BLADE_WIDTH / 2.);
-	glVertex2f(0., 0.);
-	glVertex2f(-BLADE_RADIUS, BLADE_WIDTH / 2.);
-	glEnd();
-	glPopMatrix();
-
-	// draw the rear helicopter blade with radius 1.5
-	glPushMatrix();
-	glTranslatef(0.5, 2.5, 9.0);
-	glRotatef(BladeAngle, 1.0, 0.0, 0.0);
-	glRotatef(90.0, 0.0, 1.0, 0.0);
-	glScalef(2.5, 2.5, 2.5);
-	glBegin(GL_TRIANGLES);
-	glColor3f(1.0, 1.0, 1.0);
-	glVertex2f(BLADE_RADIUS, BLADE_WIDTH / 2.);
-	glVertex2f(0., 0.);
-	glVertex2f(BLADE_RADIUS, -BLADE_WIDTH / 2.);
-
-	glVertex2f(-BLADE_RADIUS, -BLADE_WIDTH / 2.);
-	glVertex2f(0., 0.);
-	glVertex2f(-BLADE_RADIUS, BLADE_WIDTH / 2.);
-	glEnd();
-	glPopMatrix();
-	glEndList();
+	
 	glutSetWindow(MainWindow);
 	// force a call to Display( ) next time it is convenient:
 	glutPostRedisplay( );
@@ -436,9 +399,24 @@ Display( )
 
 
 	// draw the current object:
-
+	glPushMatrix();
 	glCallList( BoxList );
-	glCallList(BladeList);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0.0, 2.9, -2.0);
+	glRotatef(BladeAngle, 0.0, 1.0, 0.0);
+	glRotatef(90.0, 1.0, 0.0, 0.0);
+	glScalef(5.0, 5.0, 5.0);
+	glCallList(TopBladeList);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0.5, 2.5, 9.0);
+	glRotatef(BladeAngle, 1.0, 0.0, 0.0);
+	glRotatef(90.0, 0.0, 1.0, 0.0);
+	glCallList(RearBladeList);
+	glPopMatrix();
 	// draw some gratuitous text that just rotates on top of the scene:
 
 	glDisable( GL_DEPTH_TEST );
@@ -762,7 +740,6 @@ InitLists( )
 	
 	BoxList = glGenLists( 1 );
 	glNewList( BoxList, GL_COMPILE );
-	
 	glPushMatrix();
 	glTranslatef(0., -1., 0.);
 	glRotatef(97., 0., 1., 0.);
@@ -793,10 +770,43 @@ InitLists( )
 	}
 	glEnd();
 	glPopMatrix();
-	
-	
 	glEndList();
 
+	// draw the top helicopter blade with radius 5
+	TopBladeList = glGenLists(1);
+	glNewList(TopBladeList, GL_COMPILE);
+	glPushMatrix();
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.0, 1.0, 1.0);
+	glVertex2f(BLADE_RADIUS, BLADE_WIDTH / 2.);
+	glVertex2f(0., 0.);
+	glVertex2f(BLADE_RADIUS, -BLADE_WIDTH / 2.);
+
+	glVertex2f(-BLADE_RADIUS, -BLADE_WIDTH / 2.);
+	glVertex2f(0., 0.);
+	glVertex2f(-BLADE_RADIUS, BLADE_WIDTH / 2.);
+	glEnd();
+	glPopMatrix();
+	glEndList();
+
+	// draw the rear helicopter blade with radius 1.5
+	RearBladeList = glGenLists(1);
+	glNewList(RearBladeList, GL_COMPILE);
+	glPushMatrix();
+	
+	glScalef(2.5, 2.5, 2.5);
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.0, 1.0, 1.0);
+	glVertex2f(BLADE_RADIUS, BLADE_WIDTH / 2.);
+	glVertex2f(0., 0.);
+	glVertex2f(BLADE_RADIUS, -BLADE_WIDTH / 2.);
+
+	glVertex2f(-BLADE_RADIUS, -BLADE_WIDTH / 2.);
+	glVertex2f(0., 0.);
+	glVertex2f(-BLADE_RADIUS, BLADE_WIDTH / 2.);
+	glEnd();
+	glPopMatrix();
+	glEndList();
 	// create the axes:
 
 	AxesList = glGenLists( 1 );
